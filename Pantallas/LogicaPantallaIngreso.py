@@ -34,6 +34,7 @@ class PantallaIngreso(QMainWindow):
                               (float(self.mediaExpoLlegadas.text())),
                               (float(self.aCobros.text())),
                               (float(self.bCobros.text())),
+                              (float(self.inicioLimpieza.text()))
                               )
 
 
@@ -55,7 +56,8 @@ class PantallaIngreso(QMainWindow):
                       (float(self.bLimpieza.text())),
                       (float(self.mediaExpoLlegadas.text())),
                       (float(self.aCobros.text())),
-                      (float(self.bCobros.text()))]
+                      (float(self.bCobros.text())),
+                         (float(self.inicioLimpieza.text()))]
 
         for string in vectorStrings:
             if string == '' or string == " ":
@@ -91,7 +93,8 @@ class PantallaIngreso(QMainWindow):
                       (float(self.bLimpieza.text())),
                       (float(self.mediaExpoLlegadas.text())),
                       (float(self.aCobros.text())),
-                      (float(self.bCobros.text()))]
+                      (float(self.bCobros.text())),
+                          (float(self.inicioLimpieza.text()))]
 
         for numero in vectorFlotante:
             if numero < 0:

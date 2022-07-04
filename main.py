@@ -12,7 +12,7 @@ import random
 import auxiliares
 
 def simular(duracion, filaInicioMuestra, probAuto, probMoto, probCamioneta, probQuieraLimpieza, aLimpieza
-            , bLimpieza, mediaLlegada, aCobro, bCobro):
+            , bLimpieza, mediaLlegada, aCobro, bCobro, inicioLimpieza):
     RKControlador = Controlador()
     RungeKutta = []
 
@@ -162,8 +162,8 @@ def simular(duracion, filaInicioMuestra, probAuto, probMoto, probCamioneta, prob
 
                     if quiereLimpieza:
                         rndLimpieza, tiempoLimpieza = distribuciones.uniforme(aLimpieza, bLimpieza)
-                        tiempoLimpieza = tiempoLimpieza + (tiempoCarga + 0.5)
-                        finLimpieza1 = tiempoLimpieza + clk
+                        #tiempoLimpieza = tiempoLimpieza + (tiempoCarga + inicioLimpieza)
+                        finLimpieza1 = tiempoLimpieza + inicioLimpieza + clk
                         nuevoEvento2 = clases.Evento(finLimpieza1, vehiculo, "FinLimpieza1", "Empleado 1")
 
                         # meter Evento Limpieza en el vector de eventos
@@ -241,8 +241,8 @@ def simular(duracion, filaInicioMuestra, probAuto, probMoto, probCamioneta, prob
 
                     if quiereLimpieza:
                         rndLimpieza, tiempoLimpieza = distribuciones.uniforme(aLimpieza, bLimpieza)
-                        tiempoLimpieza = tiempoLimpieza + (tiempoCarga + 0.5)
-                        finLimpieza2 = tiempoLimpieza + clk
+                        #tiempoLimpieza = tiempoLimpieza + (tiempoCarga + inicioLimpieza)
+                        finLimpieza2 = tiempoLimpieza + inicioLimpieza + clk
                         nuevoEvento2 = clases.Evento(finLimpieza2, vehiculo, "FinLimpieza2", "Empleado 2")
 
                         # meter Evento Limpieza en el vector de eventos
@@ -480,8 +480,8 @@ def simular(duracion, filaInicioMuestra, probAuto, probMoto, probCamioneta, prob
 
                     if quiereLimpieza:
                         rndLimpieza, tiempoLimpieza = distribuciones.uniforme(aLimpieza, bLimpieza)
-                        tiempoLimpieza = tiempoLimpieza + (tiempoCarga + 0.5)
-                        finLimpieza1 = tiempoLimpieza + clk
+                        #tiempoLimpieza = tiempoLimpieza + (tiempoCarga + inicioLimpieza)
+                        finLimpieza1 = tiempoLimpieza + inicioLimpieza + clk
                         nuevoEvento2 = clases.Evento(finLimpieza1, vehiculoNuevo, "FinLimpieza1", "Empleado 1")
 
                         # meter Evento Limpieza en el vector de eventos
@@ -563,8 +563,8 @@ def simular(duracion, filaInicioMuestra, probAuto, probMoto, probCamioneta, prob
 
                     if quiereLimpieza:
                         rndLimpieza, tiempoLimpieza = distribuciones.uniforme(aLimpieza, bLimpieza)
-                        tiempoLimpieza = tiempoLimpieza + (tiempoCarga + 0.5)
-                        finLimpieza2 = tiempoLimpieza + clk
+                        #tiempoLimpieza = tiempoLimpieza + (tiempoCarga + inicioLimpieza)
+                        finLimpieza2 = tiempoLimpieza + inicioLimpieza + clk
                         nuevoEvento2 = clases.Evento(finLimpieza2, vehiculoNuevo, "FinLimpieza2", "Empleado 2")
 
                         # meter Evento Limpieza en el vector de eventos
@@ -846,11 +846,11 @@ def calculoEstadisticos(ACTiempoPermanencia, cantVehicAtendidos, empleado1, empl
     return estadisticos
 
 def principal(pantallaIngreso, duracion, filaInicioMuestra, probAuto, probMoto, probCamioneta, probQuieraLimpieza, aLimpieza
-            , bLimpieza, mediaLlegada, aCobro, bCobro):
+            , bLimpieza, mediaLlegada, aCobro, bCobro, inicioLimpieza):
 
     df, RungeKutta, ACTiempoPermanencia, cantVehicAtendidos, empleado1, empleado2, ACTiempoEspera, cantTotalVehiculos = \
         simular(duracion, filaInicioMuestra, probAuto, probMoto, probCamioneta, probQuieraLimpieza, aLimpieza
-            , bLimpieza, mediaLlegada, aCobro, bCobro)
+            , bLimpieza, mediaLlegada, aCobro, bCobro, inicioLimpieza)
 
     estadisticos = \
         calculoEstadisticos(ACTiempoPermanencia, cantVehicAtendidos, empleado1, empleado2, ACTiempoEspera, cantTotalVehiculos)
