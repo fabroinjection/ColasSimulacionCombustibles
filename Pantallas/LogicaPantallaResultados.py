@@ -34,12 +34,15 @@ class PantallaResultados(QMainWindow):
 
         cantFilas = len(datos)
 
-        if cantFilas < 400:
-            final = cantFilas
-            self.tablaResultados.setRowCount(cantFilas)
+        #if cantFilas < 400:
+        final = cantFilas
+        self.tablaResultados.setRowCount(cantFilas)
+        """
         else:
             final = 400 + inicio
             self.tablaResultados.setRowCount(401)
+        """
+
         #for i in range(inicio, final):
         for i in range(0, final):
             self.tablaResultados.setItem(fila, 0, QTableWidgetItem(str(distribuciones.truncate(
